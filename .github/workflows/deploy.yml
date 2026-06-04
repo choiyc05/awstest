@@ -19,4 +19,24 @@ jobs:
         username: ${{ secrets.EC2_USERNAME }}
         key: ${{ secrets.EC2_SSH_KEY }}
         script: |
-          echo "Deploying to EC2..."
+          cd /home/ubuntu/app || git clone https://github.com/shell-files/dev_highgooh.git /home/ubuntu/app && cd /home/ubuntu/app
+
+          git pull origin dev
+
+          cd frontend
+
+          cat << 'EOF' > .env
+          VITE_API_URL=http://localhost:8080
+          EOF
+
+          npm install
+          npm run build
+
+          cd ..
+
+          cd /home/ubuntu/compose || git clone https://github.com/shell-files/${{ github.repository }} /home/ubuntu/compose && cd /home/ubuntu/compose
+
+          git pull origin main
+
+          docker compose down
+          docker compose up -d
