@@ -34,7 +34,7 @@ jobs:
 
           cd ..
 
-          cd /home/ubuntu/compose || git clone https://github.com/shell-files/${{ github.repository }} /home/ubuntu/compose && cd /home/ubuntu/compose
+          cd /home/ubuntu/compose || git clone https://github.com/${{ github.repository }} /home/ubuntu/compose && cd /home/ubuntu/compose
 
           git pull origin main
 
