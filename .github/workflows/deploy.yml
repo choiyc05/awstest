@@ -22,7 +22,7 @@ jobs:
           cd /home/ubuntu/app || git clone https://github.com/shell-files/dev_highgooh.git /home/ubuntu/app && cd /home/ubuntu/app
 
           git fetch origin
-          git pull --rebase origin dev
+          git reset --hard origin/dev
 
           cd frontend
 
@@ -34,7 +34,7 @@ jobs:
           cd /home/ubuntu/compose || git clone https://github.com/${{ github.repository }} /home/ubuntu/compose && cd /home/ubuntu/compose
 
           git fetch origin
-          git pull --rebase origin main
+          git reset --hard origin/main 
 
           docker compose down
           docker compose up -d
