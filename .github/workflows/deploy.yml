@@ -21,7 +21,7 @@ jobs:
         script: |
           cd /home/ubuntu/app || git clone https://github.com/shell-files/dev_highgooh.git /home/ubuntu/app && cd /home/ubuntu/app
 
-          git pull --f-only origin dev
+          git pull origin dev
 
           cd frontend
 
@@ -32,7 +32,7 @@ jobs:
 
           cd /home/ubuntu/compose || git clone https://github.com/${{ github.repository }} /home/ubuntu/compose && cd /home/ubuntu/compose
 
-          git pull --f-only origin main
+          git pull origin main
 
           docker compose down
           docker compose up -d
